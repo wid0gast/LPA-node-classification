@@ -1,4 +1,6 @@
 *.npy
 *.pt
-*.idea
+.idea
 __pycache__
+.vscode
+data
