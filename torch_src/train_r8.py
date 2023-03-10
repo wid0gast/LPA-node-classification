@@ -16,14 +16,14 @@ train_size = y_train.sum()
 val_size = y_val.sum()
 test_size = y_test.sum()
 
-adj2 = np.load('../data/R8_adj_2.npy')
-adj3 = adj2.dot('../data/R8_adj_3.npy')
-adj4 = adj3.dot('../data/R8_adj_4.npy')
+adj2 = np.load('R8_adj_2.pt')
+adj3 = adj2.dot('R8_adj_3.pt')
+adj4 = adj3.dot('R8_adj_4.pt')
 
 alpha = 0.5
-adj_n = adj + alpha * adj2 + alpha * alpha * adj3 + alpha * alpha * alpha * adj4
+adj_final = adj_n + alpha * adj2 + alpha * alpha * adj3 + alpha * alpha * alpha * adj4
 
-model = LPA(adj_n)
+model = LPA(adj_final)
 
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.1)
