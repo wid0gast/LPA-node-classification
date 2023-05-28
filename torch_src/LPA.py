@@ -1,11 +1,13 @@
 import torch
 import torch.nn as nn
+# from torch.nn import nn.param
 
 class LPA_layer(nn.Module):
     def __init__(self, adj):
         super(LPA_layer, self).__init__()
-        self.adj = nn.Parameter(adj)
+        self.adj = nn.parameter.Parameter(adj)
     def forward(self, x):
+        # print(torch.sum(self.adj))
         output = torch.matmul(self.adj, x)
         return output
 
